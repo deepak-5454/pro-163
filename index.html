@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Shooting Game in Virtual Reality</title>
+  <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+  <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+  <script src="shoot.js"></script>
+</head>
+<body>
+    <a-camera paintball-shooter></a-camera>
+
+    <!-- A-Frame scene -->
+    <a-scene physics="debug: true">
+        <!-- Environment -->
+        <a-sky src="path_to_sky_image.jpg"></a-sky>
+        <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
+
+        <!-- Paintball Arena -->
+        <a-box position="0 1 -5" width="20" height="2" depth="30" color="green"></a-box>
+        
+        <!-- Paintball Gun (add your own model or 3D object) -->
+        <a-entity
+            id="paintballGun"
+            obj-model="obj: path_to_gun_model.obj; mtl: path_to_gun_material.mtl"
+            position="0 2 -10"
+            scale="0.01 0.01 0.01"
+            dynamic-body="mass: 2"
+        ></a-entity>
+        
+        <!-- Target (add your own target model) -->
+        <a-entity
+            id="target"
+            obj-model="obj: path_to_target_model.obj; mtl: path_to_target_material.mtl"
+            position="5 1 -5"
+            scale="0.01 0.01 0.01"
+            dynamic-body="mass: 1"
+        ></a-entity>
+    </a-scene>
+
+    <!-- Include your shoot.js script -->
+    <script src="shoot.js"></script>
+</body>
+</html>
